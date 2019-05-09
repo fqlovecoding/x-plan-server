@@ -14,7 +14,6 @@ import com.ffq.user.UserMapper;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class Dao {
-
 	@Autowired
 	private UserMapper userMapper;
 	

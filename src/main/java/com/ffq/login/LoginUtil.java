@@ -77,6 +77,6 @@ public class LoginUtil {
 	 * @return
 	 */
 	private List<String> getPassList(){
-		return Lists.newArrayList("/1/login");
+		return Lists.newArrayList("/1/login","/tcc");
 	}
 }
