@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ffq.common.GlobalResponse;
 import com.ffq.user.UserService;
 import com.google.common.collect.Maps;
 
@@ -25,10 +26,10 @@ public class LoginController {
 	 * @returnuid
 	 */
 	@RequestMapping("/{uid}/login")
-	public Map<String,Object> login(@PathVariable("uid") String uid) {
+	public String login(@PathVariable("uid") String uid) {
 		Map<String,Object> map = Maps.newHashMap();
 		map.put("token", loginUtil.createToken(uid));
 		map.put("code", userService.getCodeByUserId(uid));
-		return map;
+		return GlobalResponse.ok(map);
 	}
 }	

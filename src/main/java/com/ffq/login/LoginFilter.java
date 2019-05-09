@@ -12,9 +12,10 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import org.springframework.web.context.support.XmlWebApplicationContext;
 
+import com.ffq.common.GlobalResponse;
 import com.ffq.user.UserService;
 
 @WebFilter(urlPatterns = "/*")
@@ -36,7 +37,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		if (!loginUtil.auth(req, resp)) {
-			resp.getWriter().write("{NO AUTH:403}");
+			resp.getWriter().write(GlobalResponse.err("NO AUTH", 40300));
 			return;
 		}
 		chain.doFilter(req, resp);
@@ -50,7 +51,7 @@ public class LoginFilter implements Filter {
 	 */
     @Override
     public void init(FilterConfig fConfig) throws ServletException {
-        XmlWebApplicationContext cxt = (XmlWebApplicationContext)WebApplicationContextUtils.getWebApplicationContext(fConfig.getServletContext());
+    	AnnotationConfigServletWebServerApplicationContext cxt = (AnnotationConfigServletWebServerApplicationContext)WebApplicationContextUtils.getWebApplicationContext(fConfig.getServletContext());
         if(cxt != null && cxt.getBean("userService") != null && userService == null) {
         	userService = (UserService) cxt.getBean("userService");        
         }
