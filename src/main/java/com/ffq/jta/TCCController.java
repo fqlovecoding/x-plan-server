@@ -1,4 +1,4 @@
-package com.ffq.user;
+package com.ffq.jta;
 
 import java.time.LocalDateTime;
 
@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ffq.user.UserService;
+
 @RestController
-public class UserController {
+public class TCCController {
 	@Autowired
 	private UserService userService;
 	
