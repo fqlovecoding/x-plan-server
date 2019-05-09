@@ -6,16 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ffq.user.UserService;
-
 @RestController
 public class TCCController {
 	@Autowired
-	private UserService userService;
+	private TCCService tccService;
 	
 	@RequestMapping("/tcc")
 	public String tcc() {
-		userService.tcc();
+		tccService.tcc();
 		return "tcc:" + LocalDateTime.now().toString();
 	}
 }

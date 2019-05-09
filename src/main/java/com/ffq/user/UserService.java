@@ -6,23 +6,15 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ffq.credit.CreditMapper;
-import com.ffq.order.OrderMapper;
 import com.google.common.collect.Maps;
 
 @Service
 public class UserService {
 	@Autowired
 	private UserMapper userDao;
-	@Autowired
-	private OrderMapper orderMapper;
-	@Autowired
-	private CreditMapper creditMapper;
 
 	/**
 	 * @MethodName getCodeByUserId
@@ -55,14 +47,5 @@ public class UserService {
 		return true;
 	}
 
-	/**
-	 * @MethodName tcc
-	 * @Description 分布式事务测试
-	 */
-	@Transactional
-	public void tcc() {
-		orderMapper.save();
-		int i = 1 / 0;
-		creditMapper.save();
-	}
+	
 }
