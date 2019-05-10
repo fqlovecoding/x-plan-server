@@ -7,4 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface OrderMapper {
 	@Insert({ "insert into orders(oid, status) values('oid:1','下单')" })
 	void save();
+	
+	@Insert({ "insert into orders(oid, status) values(#{oid},#{status})" })
+	void create(String oid,String status);
 }

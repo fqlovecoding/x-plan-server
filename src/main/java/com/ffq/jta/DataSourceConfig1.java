@@ -20,7 +20,7 @@ import com.mysql.cj.jdbc.MysqlXADataSource;
 import lombok.Data;
 
 @Configuration
-@MapperScan(basePackages = {"com.ffq.order","com.ffq.user"}, sqlSessionFactoryRef = "db1SqlSessionFactory")
+@MapperScan(basePackages = {"com.ffq.order","com.ffq.user","com.ffq.store"}, sqlSessionFactoryRef = "db1SqlSessionFactory")
 @ConfigurationProperties(prefix = "spring.datasource.db1")
 @Data
 public class DataSourceConfig1 {
